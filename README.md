@@ -17,28 +17,37 @@
 
 *TL;DR*:Our model, DenseAV, learns the meaning of words and the location of sounds (visual grounding) without supervision or text.
 
-https://github.com/mhamilton723/FeatUp/assets/6456637/8fb5aa7f-4514-4a97-aebf-76065163cdfd
+https://github.com/mhamilton723/DenseAV/assets/6456637/ba908ab5-9618-42f9-8d7a-30ecb009091f
 
 
 ## Contents
 <!--ts-->
    * [Install](#install)
-   * [Using Pretrained Upsamplers](#using-pretrained-upsamplers)
-   * [Fitting an Implicit Upsampler](#fitting-an-implicit-upsampler-to-an-image)
+   * [Model Zoo](#model-zoo)
+   * [Evaluate Models](#evaluate-models)
+   * [Train a Model](#train-model)
+   * [Local Gradio Demo](#local-gradio-demo)
    * [Coming Soon](coming-soon)
    * [Citation](#citation)
    * [Contact](#contact)
 <!--te-->
 
 ## Install
-
-
-### Local Development
 To use DenseAV locally clone the repository:
 ```shell script
 git clone https://github.com/mhamilton723/FeatUp.git
 cd FeatUp
 ```
+
+
+## Getting Datasets
+
+### Speech and Sound Prompted ADE20K
+
+### Places Audio
+
+### Audioset
+
 
 ## Model Zoo
 
@@ -65,7 +74,7 @@ To load upsamplers trained on backbones with additional LayerNorm operations whi
 upsampler = torch.hub.load("mhamilton723/FeatUp", 'dino16')
 ```
 
-## Fitting an Implicit Upsampler to an Image
+## Evaluate Models
 
 To train an implicit upsampler for a given image and backbone first clone the repository and install it for 
 [local development](#local-development). Then run
@@ -76,6 +85,9 @@ python train_implicit_upsampler.py
 ```
 
 Parameters for this training operation can be found in the [implicit_upsampler config file](featup/configs/implicit_upsampler.yaml).
+
+
+## Train a Model
 
 ## Local Gradio Demo
 
@@ -90,23 +102,20 @@ Wait a few seconds for the demo to spin up, then navigate to [http://localhost:7
 
 ## Coming Soon:
 
-- Training your own FeatUp joint bilateral upsampler
-- Simple API for Implicit FeatUp training
+- Training your own DenseAV Model
 
 
 ## Citation
 
 ```
-@inproceedings{
-    fu2024featup,
-    title={FeatUp: A Model-Agnostic Framework for Features at Any Resolution},
-    author={Stephanie Fu and Mark Hamilton and Laura E. Brandt and Axel Feldmann and Zhoutong Zhang and William T. Freeman},
-    booktitle={The Twelfth International Conference on Learning Representations},
-    year={2024},
-    url={https://openreview.net/forum?id=GkJiNn2QDF}
-}
+@article{hamilton2024separating,
+    title={Separating the "Chirp" from the "Chat": Self-supervised Visual Grounding of Sound and Language},
+    author={Hamilton, Mark and Zisserman, Andrew and Hershey, John and Freeman, William},
+    journal={TODO},
+    year={2024}
+    }
 ```
 
 ## Contact
 
-For feedback, questions, or press inquiries please contact [Stephanie Fu](mailto:fus@mit.edu) and [Mark Hamilton](mailto:markth@mit.edu)
+For feedback, questions, or press inquiries please contact [Mark Hamilton](mailto:markth@mit.edu)
