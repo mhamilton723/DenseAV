@@ -1,0 +1,125 @@
+# Model args
+
+code_dim: 384
+image_model_type: "dino8"
+image_model_token_type: "token"
+image_aligner_type: "image_linear"
+image_pool_width: 2
+
+audio_model_type: "hubert"
+audio_aligner_type: "audio_sa_3_3_pool_2"
+audio_pool_width: 1
+
+learn_audio_cls: True
+
+#code_dim: 1024
+#image_model_type: "imagebind"
+#image_model_token_type: "token"
+#image_aligner_type: "image_linear"
+#image_pool_width: 1
+#
+#audio_model_type: "imagebind"
+#audio_aligner_type: "audio_sa"
+#audio_pool_width: 1
+#
+#learn_audio_cls: False
+
+audio_lora: False
+audio_lora_rank: 8
+image_lora: True
+image_lora_rank: 8
+
+
+spatial_dropout: 0.0
+channel_dropout: 0.0
+
+quad_mixup: 0.1
+bg_mixup: 0.0
+patch_mixup: 0.0
+mixup_weight: 0.1
+
+sim_agg_type: "misa"
+sim_agg_heads: 1
+sim_use_cls: False
+
+cal_init: 1.0
+cal_balance_weight: 0.1
+nonneg_sim: False
+nonneg_pressure: 0.01
+silence_l1: 0.01
+silence_l2: 0.0
+tv_weight: 0.01
+specialization_weight: 0.05
+head_agg: "max_elementwise"
+disentangle_weight: 0.0
+
+norm_vectors: False
+
+neg_audio: true
+neg_audio_weight: 0.01
+
+
+pretrain_steps: 3000
+pretrain_lr: .5e-4
+
+# Loss args
+lr: .5e-4
+lr_warmup: 1000
+
+#lr_warmup: 100
+
+lr_schedule: ~
+lr_cycle_length: 50000
+
+optimizer: "adam"
+gradient_clipping: 10.0
+adaptive_clipping: True
+gather_tensors: True
+loss_type: "nce"
+loss_leak: 0.0
+loss_margin: 0.0
+mask_silence: true
+extra_audio_masking: true
+max_steps: 1000001
+
+finetune_image_model: False
+finetune_audio_model: True
+
+# Checkpointing args
+load_strict: true
+starting_weights: ~
+auto_resume: false
+grouping_name: "foo"
+resume_prefix: "imagebind_exp2"
+
+# Data Args
+#dataset_name: "sample-audio"
+dataset_name: "places-audio"
+#dataset_name: "mixed"
+#dataset_name: "audio-set-full"
+use_extra_val_sets: true
+batch_size: 10
+load_size: 224
+image_aug: true
+audio_aug: false
+
+audio_level: false
+
+memory_buffer_size: 0
+
+val_check_interval: 10000 #0
+use_cached_embs: false
+num_workers: 12
+num_gpus: 4
+num_sanity_val_steps: 0 #-1
+seed: 0
+
+# Env args
+output_root: '../'
+pytorch_data_dir: '/pytorch-data/'
+submitting_to_aml: false
+
+hydra:
+  run:
+    dir: "."
+  output_subdir: ~
