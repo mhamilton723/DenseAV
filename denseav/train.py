@@ -890,7 +890,7 @@ class LitAVAligner(pl.LightningModule):
     def semseg_validation(self, speech_preds, sound_preds):
 
         if self.trainer.is_global_zero:
-            from evaluate_semseg import get_paired_heatmaps
+            from eval_utils import get_paired_heatmaps
             def prep_preds(preds, loader):
                 results = flatten_preds(preds)
                 metadata = loader.dataset.metadata

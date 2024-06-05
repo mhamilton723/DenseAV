@@ -1,5 +1,5 @@
 # hubconf.py
-from denseav.train_av_alignment import LitAVAligner
+from denseav.train import LitAVAligner
 
 dependencies = ['torch', 'torchvision', 'PIL']  # List any dependencies here
 
@@ -13,13 +13,13 @@ def _load_base(model_name):
     return model
 
 
-def denseav_2head():
+def sound_and_language():
     return _load_base("denseav_2head")
 
 
-def denseav_language():
+def language():
     return _load_base("denseav_language")
 
 
-def denseav_sound():
+def sound():
     return _load_base("denseav_sound")

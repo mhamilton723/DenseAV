@@ -15,7 +15,7 @@
 
 ![DenseAV Overview Graphic](https://mhamilton.net/images/website_hero_small-p-1080.jpg)
 
-*TL;DR*:Our model, DenseAV, learns the meaning of words and the location of sounds (visual grounding) without supervision or text.
+**TL;DR**:Our model, DenseAV, learns the meaning of words and the location of sounds (visual grounding) without supervision or text.
 
 https://github.com/mhamilton723/DenseAV/assets/6456637/ba908ab5-9618-42f9-8d7a-30ecb009091f
 
@@ -39,7 +39,6 @@ git clone https://github.com/mhamilton723/FeatUp.git
 cd FeatUp
 ```
 
-
 ## Getting Datasets
 
 ### Speech and Sound Prompted ADE20K
@@ -53,45 +52,49 @@ cd FeatUp
 
 To see examples of pretrained model usage please see our [Collab notebook](https://colab.research.google.com/github/mhamilton723/DenseAV/blob/main/demo.ipynb). We currently supply the following pretrained models:
 
-| Model Name | Checkpoint                                                                                                                       | Checkpoint (No LayerNorm)                                                                                                                  | Torch Hub Repository | Torch Hub Name |
-|------------|----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------|----------------|
-| DINO       | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/dino16_jbu_stack_cocostuff.ckpt) | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/no_norm/dino16_jbu_stack_cocostuff.ckpt)   | mhamilton723/FeatUp  | dino16         |
-| DINO v2    | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/dinov2_jbu_stack_cocostuff.ckpt) | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/no_norm/dinov2_jbu_stack_cocostuff.ckpt)   | mhamilton723/FeatUp  | dinov2         |
-| CLIP       | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/clip_jbu_stack_cocostuff.ckpt)   | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/no_norm/clip_jbu_stack_cocostuff.ckpt)     | mhamilton723/FeatUp  | clip           |
-| MaskCLIP   | n/a                                                                                                                              | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/no_norm/maskclip_jbu_stack_cocostuff.ckpt) | mhamilton723/FeatUp  | maskclip       |
-| ViT        | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/vit_jbu_stack_cocostuff.ckpt)      | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/no_norm/vit_jbu_stack_cocostuff.ckpt)      | mhamilton723/FeatUp  | vit            |
-| ResNet50   | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/resnet50_jbu_stack_cocostuff.ckpt) | [Download](https://marhamilresearch4.blob.core.windows.net/feature-upsampling-public/pretrained/no_norm/resnet50_jbu_stack_cocostuff.ckpt) | mhamilton723/FeatUp  | resnet50       |
+| Model Name                    | Checkpoint                                                                                                                       | Torch Hub Repository | Torch Hub Name     |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------|----------------------|--------------------|
+| Sound                         | [Download](https://marhamilresearch4.blob.core.windows.net/denseav-public/hub/denseav_sound.ckpt) | mhamilton723/DenseAV | sound              |
+| Language                      | [Download](https://marhamilresearch4.blob.core.windows.net/denseav-public/hub/denseav_language.ckpt) | mhamilton723/DenseAV | language           |
+| Sound + Language (Two Headed) | [Download](https://marhamilresearch4.blob.core.windows.net/denseav-public/hub/denseav_2head.ckpt)   | mhamilton723/DenseAV | sound_and_language |
 
-For example, to load the FeatUp JBU upsampler for the DINO backbone without an additional LayerNorm on the spatial features:
+For example, to load the model trained on both sound and language:
 
 ```python
-upsampler = torch.hub.load("mhamilton723/FeatUp", 'dino16', use_norm=False)
+upsampler = torch.hub.load("mhamilton723/DenseAV", 'sound_and_language')
 ```
 
-To load upsamplers trained on backbones with additional LayerNorm operations which makes training and transfer learning a bit more stable:
-
-```python
-upsampler = torch.hub.load("mhamilton723/FeatUp", 'dino16')
-```
 
 ## Evaluate Models
 
-To train an implicit upsampler for a given image and backbone first clone the repository and install it for 
+To evaluate a trained model first clone the repository for
 [local development](#local-development). Then run
 
-```python
+```shell
 cd featup
-python train_implicit_upsampler.py
+python evaluate.py
 ```
 
-Parameters for this training operation can be found in the [implicit_upsampler config file](featup/configs/implicit_upsampler.yaml).
+After evaluation, see the results in tensorboard's hparams tab. 
+
+```shell
+cd ../logs/evaluate
+tensorboard --logdir .
+```
+
+Then visit [https://localhost:6006](https://localhost:6006) and click on hparams to browse results. We report "advanced" speech metrics and "basic" sound metrics in our paper.
 
 
 ## Train a Model
 
+```shell
+cd denseav
+python train.py
+```
+
 ## Local Gradio Demo
 
-To run our [HuggingFace Spaces hosted FeatUp demo](https://huggingface.co/spaces/mhamilton723/FeatUp) locally first install FeatUp for local development. Then  run:
+To run our [HuggingFace Spaces hosted DenseAV demo](https://huggingface.co/spaces/mhamilton723/FeatUp) locally first install DenseAV for local development. Then  run:
 
 ```shell
 python gradio_app.py
@@ -102,8 +105,7 @@ Wait a few seconds for the demo to spin up, then navigate to [http://localhost:7
 
 ## Coming Soon:
 
-- Training your own DenseAV Model
-
+- Bigger models!
 
 ## Citation
 
