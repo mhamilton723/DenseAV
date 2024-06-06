@@ -9,7 +9,8 @@ import torch
 import torch.nn.functional as F
 import torchvision
 from moviepy.editor import VideoFileClip, AudioFileClip
-
+from IPython.display import HTML, display
+from base64 import b64encode
 from denseav.shared import pca
 
 
@@ -45,7 +46,7 @@ def write_video_with_audio(video_frames, audio_array, video_fps, audio_fps, outp
         video_clip = VideoFileClip(temp_video_path)
         audio_clip = AudioFileClip(temp_audio_path)
         final_clip = video_clip.set_audio(audio_clip)
-        final_clip.write_videofile(output_path, codec='libx264')
+        final_clip.write_videofile(output_path, codec='libx264', verbose=False)
         os.remove(temp_video_path)
         os.remove(temp_audio_path)
     else:
@@ -231,3 +232,13 @@ def plot_feature_video(image_feats,
         video_fps,
         audio_fps,
         audio_filename)
+
+
+def display_video_in_notebook(path):
+    mp4 = open(path, 'rb').read()
+    data_url = "data:video/mp4;base64," + b64encode(mp4).decode()
+    display(HTML("""
+  <video width=400 controls>
+        <source src="%s" type="video/mp4">
+  </video>
+  """ % data_url))

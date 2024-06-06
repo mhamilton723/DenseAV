@@ -18,7 +18,8 @@ setup(
         'timm==0.4.12',
         'moviepy',
         'hydra-core',
-        'peft==0.5.0'
+        'peft==0.5.0',
+        'av'
     ],
     author='Mark Hamilton',
     author_email='markth@mit.edu',
