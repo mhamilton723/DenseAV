@@ -90,52 +90,37 @@ def get_image_featurizer(name, token_type="key", **kwargs):
     name = name.lower()
 
     if name == "vit":
-        from featurizers.DINO import DINOFeaturizer
+        from denseav.featurizers.DINO import DINOFeaturizer
         patch_size = 16
         model = DINOFeaturizer("vit_small_patch16_224", patch_size, token_type)
         dim = 384
-    elif name in {"3d-dino", "chk-dino"} or "ft_dino" in name:
-        from featurizers.DINO import DINOFeaturizer
-        patch_size = 16
-        model = DINOFeaturizer("{}_vits16".format(name), patch_size, token_type)
-        dim = 384
-    elif name == "iarpa-dino":
-        from featurizers.DINO import DINOFeaturizer
-        patch_size = 16
-        model = DINOFeaturizer("{}_vits16".format(name), patch_size, token_type)
-        dim = 384
     elif name == "dino16":
-        from featurizers.DINO import DINOFeaturizer
+        from denseav.featurizers.DINO import DINOFeaturizer
         patch_size = 16
         model = DINOFeaturizer("dino_vits16", patch_size, token_type)
         dim = 384
     elif name == "dino8":
-        from featurizers.DINO import DINOFeaturizer
+        from denseav.featurizers.DINO import DINOFeaturizer
         patch_size = 8
         model = DINOFeaturizer("dino_vits8", patch_size, token_type)
         dim = 384
     elif name == "clip":
-        from featurizers.CLIP import CLIPFeaturizer
+        from denseav.featurizers.CLIP import CLIPFeaturizer
         patch_size = 16
         model = CLIPFeaturizer()
         dim = 512
     elif name == "cavmae":
-        from featurizers.CAVMAE import CAVMAEImageFeaturizer
+        from denseav.featurizers.CAVMAE import CAVMAEImageFeaturizer
         model = CAVMAEImageFeaturizer(kwargs["output_root"], model=kwargs.get("model"))
         dim = 768
         patch_size = 16
-    elif name == "cavmae-mixed":
-        from featurizers.CAVMAE import CAVMAEImageFeaturizer
-        model = CAVMAEImageFeaturizer(kwargs["output_root"], model_name="mixed", model=kwargs.get("model"))
-        dim = 768
-        patch_size = 16
     elif name == "fnac":
-        from featurizers.FNACAVL import FNACImageFeaturizer
+        from denseav.featurizers.FNACAVL import FNACImageFeaturizer
         model = FNACImageFeaturizer(kwargs["output_root"], model=kwargs.get("model"))
         dim = 512
         patch_size = 16
     elif name == "imagebind":
-        from featurizers.ImageBind import ImageBindImageFeaturizer
+        from denseav.featurizers.ImageBind import ImageBindImageFeaturizer
         model = ImageBindImageFeaturizer(kwargs["output_root"], model=kwargs.get("model"))
         dim = 1024
         patch_size = 16
@@ -146,12 +131,12 @@ def get_image_featurizer(name, token_type="key", **kwargs):
         patch_size = 1
         dim = 2048
     elif name == "davenet":
-        from featurizers.DAVENet import DavenetImageFeaturizer
+        from fdenseav.eaturizers.DAVENet import DavenetImageFeaturizer
         model = DavenetImageFeaturizer()
         patch_size = 1
         dim = 1024
     elif name == "dinov2":
-        from featurizers.DINOv2 import DINOv2Featurizer
+        from denseav.featurizers.DINOv2 import DINOv2Featurizer
         model = DINOv2Featurizer()
         patch_size = 14
         dim = 768
@@ -162,7 +147,7 @@ def get_image_featurizer(name, token_type="key", **kwargs):
 
 def get_audio_featurizer(name, **kwargs):
     if name == "davenet":
-        from featurizers.DAVENet import DavenetAudioFeaturizer
+        from denseav.featurizers.DAVENet import DavenetAudioFeaturizer
         model = DavenetAudioFeaturizer()
         dim = 1024
     elif name == "dino8":
@@ -172,23 +157,19 @@ def get_audio_featurizer(name, **kwargs):
         model = Hubert()
         dim = 1024
     elif name == "cavmae":
-        from featurizers.CAVMAE import CAVMAEAudioFeaturizer
+        from denseav.featurizers.CAVMAE import CAVMAEAudioFeaturizer
         model = CAVMAEAudioFeaturizer(kwargs["output_root"], model=kwargs.get("model"))
         dim = 768
-    elif name == "cavmae-mixed":
-        from featurizers.CAVMAE import CAVMAEAudioFeaturizer
-        model = CAVMAEAudioFeaturizer(kwargs["output_root"], model_name="mixed", model=kwargs.get("model"))
-        dim = 768
     elif name == "imagebind":
-        from featurizers.ImageBind import ImageBindAudioFeaturizer
+        from denseav.featurizers.ImageBind import ImageBindAudioFeaturizer
         model = ImageBindAudioFeaturizer(kwargs["output_root"], model=kwargs.get("model"))
         dim = 1024
     elif name == "audiomae":
-        from featurizers.AudioMAE import AudioMAE
+        from denseav.featurizers.AudioMAE import AudioMAE
         model = AudioMAE(kwargs["output_root"], False)
         dim = 768
     elif name == "audiomae-finetuned":
-        from featurizers.AudioMAE import AudioMAE
+        from denseav.featurizers.AudioMAE import AudioMAE
         model = AudioMAE(kwargs["output_root"], True)
         dim = 768
     else:
