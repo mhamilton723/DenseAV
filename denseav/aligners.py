@@ -4,7 +4,7 @@ import torch
 import torch.nn.functional as F
 from torch.nn import ModuleList
 
-from featurizers.DINO import Block
+from denseav.featurizers.DINO import Block
 
 
 class ChannelNorm(torch.nn.Module):

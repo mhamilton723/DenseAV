@@ -19,11 +19,11 @@ from pytorch_lightning.utilities import grad_norm
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts, SequentialLR, LambdaLR
 from torchmetrics.functional.classification import binary_average_precision
 
-from aggregators import get_aggregator
-from aligners import get_aligner, ProgressiveGrowing
-from constants import *
-from data.AVDatasets import AVDataModule
-from shared import flatten_preds, GatherLayer, \
+from denseav.aggregators import get_aggregator
+from denseav.aligners import get_aligner, ProgressiveGrowing
+from denseav.constants import *
+from denseav.data.AVDatasets import AVDataModule
+from denseav.shared import flatten_preds, GatherLayer, \
     get_image_featurizer, get_audio_featurizer, RollingAvg, create_model_from_cfg
 
 torch.multiprocessing.set_sharing_strategy('file_system')

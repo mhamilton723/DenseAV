@@ -1,7 +1,7 @@
 # hubconf.py
 from denseav.train import LitAVAligner
 
-dependencies = ['torch', 'torchvision', 'PIL']  # List any dependencies here
+dependencies = ['torch', 'torchvision', 'PIL', 'denseav']  # List any dependencies here
 
 
 def _load_base(model_name):

@@ -9,7 +9,7 @@ from torchmetrics.functional.classification import binary_average_precision
 from tqdm import tqdm
 
 from constants import *
-from shared import unnorm, remove_axes
+from denseav.shared import unnorm, remove_axes
 
 
 def prep_heatmap(sims, masks, h, w):

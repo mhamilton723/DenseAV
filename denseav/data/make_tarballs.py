@@ -9,7 +9,7 @@ from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 from pathlib import Path
 
-from shared import batch
+from denseav.shared import batch
 
 import tempfile
 import shutil

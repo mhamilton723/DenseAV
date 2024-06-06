@@ -10,7 +10,7 @@ import torch.nn.functional as F
 import torchvision
 from moviepy.editor import VideoFileClip, AudioFileClip
 
-from shared import pca
+from denseav.shared import pca
 
 
 def write_video_with_audio(video_frames, audio_array, video_fps, audio_fps, output_path):

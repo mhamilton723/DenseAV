@@ -17,7 +17,9 @@ setup(
         'matplotlib',
         'timm==0.4.12',
         'moviepy',
-        'hydra-core'
+        'hydra-core',
+        'tempfile',
+        'shutil'
     ],
     author='Mark Hamilton',
     author_email='markth@mit.edu',

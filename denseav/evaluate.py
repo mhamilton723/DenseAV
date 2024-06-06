@@ -4,8 +4,8 @@ from omegaconf import DictConfig, OmegaConf
 from pytorch_lightning import Trainer
 from pytorch_lightning import seed_everything
 from pytorch_lightning.loggers import TensorBoardLogger
-from data.AVDatasets import AVDataModule
-from shared import load_trained_model
+from denseav.data.AVDatasets import AVDataModule
+from denseav.shared import load_trained_model
 
 
 @hydra.main(config_path="configs", config_name="av_align.yaml")

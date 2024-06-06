@@ -18,9 +18,9 @@ from PIL import Image
 from torch.utils.data import Dataset, DataLoader, default_collate, Subset, ConcatDataset
 from tqdm import tqdm
 
-from constants import AUDIO_MASK, AUDIO_POS_MASK, IMAGE_MASK, IMAGE_INPUT
-from data.make_tarballs import untar_all
-from shared import norm, prep_waveform
+from denseav.constants import AUDIO_MASK, AUDIO_POS_MASK, IMAGE_MASK, IMAGE_INPUT
+from denseav.data.make_tarballs import untar_all
+from denseav.shared import norm, prep_waveform
 
 
 def sample_choice(choices, probs):

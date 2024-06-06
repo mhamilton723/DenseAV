@@ -6,7 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
 
-from constants import *
+from denseav.constants import *
 
 
 @torch.jit.script
