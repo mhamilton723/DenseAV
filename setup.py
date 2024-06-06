@@ -18,7 +18,6 @@ setup(
         'timm==0.4.12',
         'moviepy',
         'hydra-core',
-        'tempfile',
         'shutil'
     ],
     author='Mark Hamilton',
