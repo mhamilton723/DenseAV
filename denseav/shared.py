@@ -153,7 +153,7 @@ def get_audio_featurizer(name, **kwargs):
     elif name == "dino8":
         model, _, dim = get_image_featurizer("dino8")
     elif name == "hubert":
-        from featurizers.Hubert import Hubert
+        from denseav.featurizers.Hubert import Hubert
         model = Hubert()
         dim = 1024
     elif name == "cavmae":
