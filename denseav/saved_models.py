@@ -3,10 +3,7 @@ import re
 from os.path import join
 
 import torch
-from pytorch_lightning.utilities.deepspeed import (
-    convert_zero_checkpoint_to_fp32_state_dict,
-    ds_checkpoint_dir
-)
+
 
 
 def get_latest(name, checkpoint_dir, extra_args=None):
@@ -33,6 +30,9 @@ def convert_deepspeed_checkpoint(deepspeed_ckpt_path: str, pl_ckpt_path: str = N
         a .pt extension.
     Returns: path to the converted checkpoint.
     '''
+    from pytorch_lightning.utilities.deepspeed import convert_zero_checkpoint_to_fp32_state_dict
+
+
     if not (deepspeed_ckpt_path.endswith('.ckpt') and os.path.isdir(deepspeed_ckpt_path)):
         raise ValueError(
             'args.ckpt_dir should point to the checkpoint directory'
@@ -70,6 +70,9 @@ def _merge_deepspeed_weights(deepspeed_ckpt_path: str, fp32_ckpt_path: str):
     deepspeed_ckpt_path: Path to the DeepSpeed checkpoint folder.
     fp32_ckpt_path: Path to the reconstructed
     '''
+    from pytorch_lightning.utilities.deepspeed import ds_checkpoint_dir
+
+
     # This first part is based on pytorch_lightning.utilities.deepspeed.convert_zero_checkpoint_to_fp32_state_dict
     checkpoint_dir = ds_checkpoint_dir(deepspeed_ckpt_path)
     optim_files = get_optim_files(checkpoint_dir)

@@ -13,7 +13,7 @@
 [John R. Hershey](https://research.google/people/john-hershey/),
 [William T. Freeman](https://billf.mit.edu/about/bio)
 
-![DenseAV Overview Graphic](https://mhamilton.net/images/website_hero_small-p-1080.jpg)
+![DenseAV Overview Graphic](https://mhamilton.net/images/hero_fig_black.jpg)
 
 **TL;DR**:Our model, DenseAV, learns the meaning of words and the location of sounds (visual grounding) without supervision or text.
 
@@ -33,10 +33,13 @@ https://github.com/mhamilton723/DenseAV/assets/6456637/ba908ab5-9618-42f9-8d7a-3
 <!--te-->
 
 ## Install
+
 To use DenseAV locally clone the repository:
+
 ```shell script
 git clone https://github.com/mhamilton723/FeatUp.git
 cd FeatUp
+pip install requirements.txt
 ```
 
 ## Getting Datasets
@@ -115,7 +118,7 @@ Wait a few seconds for the demo to spin up, then navigate to [http://localhost:7
     author={Hamilton, Mark and Zisserman, Andrew and Hershey, John and Freeman, William},
     journal={TODO},
     year={2024}
-    }
+}
 ```
 
 ## Contact

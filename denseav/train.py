@@ -1,4 +1,6 @@
 import os
+from collections import deque
+from itertools import combinations
 from os.path import join
 
 import hydra
@@ -19,14 +21,10 @@ from torchmetrics.functional.classification import binary_average_precision
 
 from aggregators import get_aggregator
 from aligners import get_aligner, ProgressiveGrowing
+from constants import *
 from data.AVDatasets import AVDataModule
 from shared import flatten_preds, GatherLayer, \
     get_image_featurizer, get_audio_featurizer, RollingAvg, create_model_from_cfg
-from constants import *
-from collections import deque
-import gc
-import torch
-from itertools import combinations
 
 torch.multiprocessing.set_sharing_strategy('file_system')
 
