@@ -39,7 +39,7 @@ To use DenseAV locally clone the repository:
 ```shell script
 git clone https://github.com/mhamilton723/FeatUp.git
 cd FeatUp
-pip install requirements.txt
+pip install -e .
 ```
 
 ## Getting Datasets
