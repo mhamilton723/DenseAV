@@ -95,7 +95,7 @@ To see examples of pretrained model usage please see our [Collab notebook](https
 For example, to load the model trained on both sound and language:
 
 ```python
-upsampler = torch.hub.load("mhamilton723/DenseAV", 'sound_and_language')
+model = torch.hub.load("mhamilton723/DenseAV", 'sound_and_language')
 ```
 
 
