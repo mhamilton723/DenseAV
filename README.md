@@ -37,18 +37,49 @@ https://github.com/mhamilton723/DenseAV/assets/6456637/ba908ab5-9618-42f9-8d7a-3
 To use DenseAV locally clone the repository:
 
 ```shell script
-git clone https://github.com/mhamilton723/FeatUp.git
-cd FeatUp
+git clone https://github.com/mhamilton723/DenseAV.git
+cd DenseAV
 pip install -e .
 ```
 
 ## Getting Datasets
 
+Our code assumes that all data lives in a common directory on your system, in these examples we use `/path/to/your/data`. Our code will often reference this directory as the `data_root`
+
 ### Speech and Sound Prompted ADE20K
+
+To download a prepared version of the Speech and Sound prompted ADE20K Dataset:
+
+```bash
+cd /path/to/your/data
+wget https://marhamilresearch4.blob.core.windows.net/denseav-public/datasets/ADE20KSoundPrompted.zip
+unzip ADE20KSoundPrompted.zip
+wget https://marhamilresearch4.blob.core.windows.net/denseav-public/datasets/ADE20KSpeechPrompted.zip
+unzip ADE20KSpeechPrompted.zip
+```
 
 ### Places Audio
 
+First download the places audio dataset from its [original source](https://groups.csail.mit.edu/sls/downloads/placesaudio/downloads.cgi).
+
+To run the code the data will need to be processed to be of the form:
+
+```
+
+
+```
+
 ### Audioset
+
+Because of copyright issues we cannot make [Audioset](https://research.google.com/audioset/dataset/index.html) easily availible to download.
+First download this dataset through appropriate means. [This other project](https://github.com/ktonal/audioset-downloader) appears to make this simple.
+
+To run the code the data will need to be processed to be of the form:
+
+```
+
+
+```
 
 
 ## Model Zoo
