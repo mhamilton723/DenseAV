@@ -48,7 +48,7 @@ Our code assumes that all data lives in a common directory on your system, in th
 
 ### Speech and Sound Prompted ADE20K
 
-To download a prepared version of the Speech and Sound prompted ADE20K Dataset:
+To download our new Speech and Sound prompted ADE20K Dataset:
 
 ```bash
 cd /path/to/your/data
