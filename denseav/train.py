@@ -134,7 +134,7 @@ class SpatialDropout(torch.nn.Module):
             return x
 
 
-class LitAVAligner(PyTorchModelHubMixin, pl.LightningModule):
+class LitAVAligner(pl.LightningModule, PyTorchModelHubMixin):
     def __init__(self,
                  code_dim,
                  image_model_type,
