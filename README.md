@@ -4,7 +4,8 @@
 
 [![Website](https://img.shields.io/badge/DenseAV-%F0%9F%8C%90Website-purple?style=flat)](https://aka.ms/denseav) [![arXiv](https://img.shields.io/badge/arXiv-2406.05629-b31b1b.svg)](https://arxiv.org/abs/2406.05629) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mhamilton723/DenseAV/blob/main/demo.ipynb)
 
-[//]: # ([![Huggingface]&#40;https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-FeatUp-orange&#41;]&#40;https://huggingface.co/spaces/mhamilton723/DenseAV&#41; )
+[![Huggingface](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-DenseAV-orange)](https://huggingface.co/spaces/mhamilton723/DenseAV) 
+
 [//]: # ([![Huggingface]&#40;https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper%20Page-orange&#41;]&#40;https://huggingface.co/papers/2403.10516&#41;)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/separating-the-chirp-from-the-chat-self/speech-prompted-semantic-segmentation-on)](https://paperswithcode.com/sota/speech-prompted-semantic-segmentation-on?p=separating-the-chirp-from-the-chat-self)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/separating-the-chirp-from-the-chat-self/sound-prompted-semantic-segmentation-on)](https://paperswithcode.com/sota/sound-prompted-semantic-segmentation-on?p=separating-the-chirp-from-the-chat-self)
