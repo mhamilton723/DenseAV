@@ -9,7 +9,6 @@ import torch
 import torch.nn.functional as F
 import torchvision
 from moviepy.editor import VideoFileClip, AudioFileClip
-from IPython.display import HTML, display
 from base64 import b64encode
 from denseav.shared import pca
 
@@ -204,7 +203,7 @@ def plot_feature_video(image_feats,
         audio_feats_ = audio_feats.cpu()
         [red_img_feats, red_audio_feats], _ = pca([
             image_feats_,
-            audio_feats_.tile(image_feats_.shape[0], 1, 1, 1)
+            audio_feats_,  # .tile(image_feats_.shape[0], 1, 1, 1)
         ])
         _, _, vh, vw = frames.shape
         red_img_feats = F.interpolate(red_img_feats, size=(vh, vw), mode="bicubic")
@@ -235,6 +234,7 @@ def plot_feature_video(image_feats,
 
 
 def display_video_in_notebook(path):
+    from IPython.display import HTML, display
     mp4 = open(path, 'rb').read()
     data_url = "data:video/mp4;base64," + b64encode(mp4).decode()
     display(HTML("""
