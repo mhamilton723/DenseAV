@@ -24,7 +24,7 @@ if __name__ == "__main__":
     else:
         os.environ['TORCH_HOME'] = '/tmp/.cache'
         os.environ['GRADIO_EXAMPLES_CACHE'] = '/tmp/gradio_cache'
-        sample_images_dir = "/tmp/samples"
+        sample_videos_dir = "/tmp/samples"
 
 
     def download_video(url, save_path):

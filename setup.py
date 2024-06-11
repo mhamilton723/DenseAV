@@ -19,7 +19,8 @@ setup(
         'moviepy',
         'hydra-core',
         'peft==0.5.0',
-        'av'
+        'av',
+        'audioread'
     ],
     author='Mark Hamilton',
     author_email='markth@mit.edu',
