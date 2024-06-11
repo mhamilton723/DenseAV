@@ -17,10 +17,14 @@ from os.path import join
 
 if __name__ == "__main__":
 
-    # os.environ['TORCH_HOME'] = '/tmp/.cache'
-    # os.environ['GRADIO_EXAMPLES_CACHE'] = '/tmp/gradio_cache'
-    # sample_images_dir = "/tmp/samples"
-    sample_videos_dir = "samples"
+    mode = "local"
+
+    if mode == "local":
+        sample_videos_dir = "samples"
+    else:
+        os.environ['TORCH_HOME'] = '/tmp/.cache'
+        os.environ['GRADIO_EXAMPLES_CACHE'] = '/tmp/gradio_cache'
+        sample_images_dir = "/tmp/samples"
 
 
     def download_video(url, save_path):
@@ -63,7 +67,6 @@ if __name__ == "__main__":
     video_output2 = gr.Video(label="Multi-Head Audio Video Attention (Only Availible for sound_and_language)",
                              height=480)
     video_output3 = gr.Video(label="Visual Features", height=480)
-    video_output4 = gr.Video(label="Audio Features", height=480)
 
     models = {o: torch.hub.load("mhamilton723/DenseAV", o) for o in options}
 
@@ -146,7 +149,7 @@ if __name__ == "__main__":
             temp_video_path_3,
             temp_video_path_4,
         )
-        return temp_video_path_1, temp_video_path_2, temp_video_path_3, temp_video_path_4
+        # return temp_video_path_1, temp_video_path_2, temp_video_path_3, temp_video_path_4
 
         return temp_video_path_1, temp_video_path_2, temp_video_path_3
 
@@ -180,9 +183,10 @@ if __name__ == "__main__":
                 video_output3.render()
 
         submit_button.click(fn=process_video, inputs=[video_input, model_option],
-                            outputs=[video_output1, video_output2])
+                            outputs=[video_output1, video_output2, video_output3])
 
-    # demo.launch(server_name="0.0.0.0", server_port=6006, debug=True)
 
-    demo.launch(server_name="0.0.0.0", server_port=6006, debug=True)
-    # demo.launch(server_name="0.0.0.0", server_port=7860, debug=True)
+    if mode == "local":
+        demo.launch(server_name="0.0.0.0", server_port=6006, debug=True)
+    else:
+        demo.launch(server_name="0.0.0.0", server_port=7860, debug=True)
