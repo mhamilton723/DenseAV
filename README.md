@@ -63,6 +63,16 @@ For example, to load the model trained on both sound and language:
 model = torch.hub.load("mhamilton723/DenseAV", 'sound_and_language')
 ```
 
+### Load from HuggingFace
+
+```python
+from denseav.train import LitAVAligner
+
+model1 = LitAVAligner.from_pretrained("mhamilton723/DenseAV-sound")
+model2 = LitAVAligner.from_pretrained("mhamilton723/DenseAV-language")
+model3 = LitAVAligner.from_pretrained("mhamilton723/DenseAV-sound-language")
+```
+
 
 ## Getting Datasets
 

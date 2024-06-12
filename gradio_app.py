@@ -24,6 +24,9 @@ if __name__ == "__main__":
         sample_videos_dir = "samples"
     else:
         os.environ['TORCH_HOME'] = '/tmp/.cache'
+        os.environ['HF_HOME'] = '/tmp/.cache'
+        os.environ['HF_DATASETS_CACHE'] = '/tmp/.cache'
+        os.environ['TRANSFORMERS_CACHE'] = '/tmp/.cache'
         os.environ['GRADIO_EXAMPLES_CACHE'] = '/tmp/gradio_cache'
         sample_videos_dir = "/tmp/samples"
 
