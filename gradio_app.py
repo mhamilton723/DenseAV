@@ -69,7 +69,7 @@ if __name__ == "__main__":
                              height=480)
     video_output3 = gr.Video(label="Visual Features", height=480)
 
-    models = {o: LitAVAligner.from_pretrained(f"nielsr/DenseAV-{o}") for o in options}
+    models = {o: LitAVAligner.from_pretrained(f"mhamilton723/DenseAV-{o}") for o in options}
 
 
     def process_video(video, model_option):
