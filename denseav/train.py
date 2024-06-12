@@ -134,7 +134,7 @@ class SpatialDropout(torch.nn.Module):
             return x
 
 
-class LitAVAligner(pl.LightningModule, PyTorchModelHubMixin, repo_url="https://github.com/mhamilton723/DenseAV", license="MIT", tags=["denseav"]):
+class LitAVAligner(pl.LightningModule, PyTorchModelHubMixin, repo_url="https://github.com/mhamilton723/DenseAV", license="mit", tags=["denseav"]):
     def __init__(self,
                  code_dim,
                  image_model_type,
