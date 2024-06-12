@@ -19,6 +19,8 @@ from pytorch_lightning.utilities import grad_norm
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts, SequentialLR, LambdaLR
 from torchmetrics.functional.classification import binary_average_precision
 
+from huggingface_hub import PyTorchModelHubMixin
+
 from denseav.aggregators import get_aggregator
 from denseav.aligners import get_aligner, ProgressiveGrowing
 from denseav.constants import *
@@ -132,7 +134,7 @@ class SpatialDropout(torch.nn.Module):
             return x
 
 
-class LitAVAligner(pl.LightningModule):
+class LitAVAligner(pl.LightningModule, PyTorchModelHubMixin, repo_url="https://github.com/mhamilton723/DenseAV", license="mit", tags=["denseav"]):
     def __init__(self,
                  code_dim,
                  image_model_type,

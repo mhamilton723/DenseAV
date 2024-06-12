@@ -11,6 +11,7 @@ from PIL import Image
 from featup.util import norm
 from torchaudio.functional import resample
 
+from denseav.train import LitAVAligner
 from denseav.plotting import plot_attention_video, plot_2head_attention_video, plot_feature_video
 from denseav.shared import norm, crop_to_divisor, blur_dim
 from os.path import join
@@ -56,7 +57,7 @@ if __name__ == "__main__":
             print(f"{filename} already exists. Skipping download.")
 
     csv.field_size_limit(100000000)
-    options = ['language', "sound_and_language", "sound"]
+    options = ['language', "sound-language", "sound"]
     load_size = 224
     plot_size = 224
 
@@ -68,7 +69,7 @@ if __name__ == "__main__":
                              height=480)
     video_output3 = gr.Video(label="Visual Features", height=480)
 
-    models = {o: torch.hub.load("mhamilton723/DenseAV", o) for o in options}
+    models = {o: LitAVAligner.from_pretrained(f"mhamilton723/DenseAV-{o}") for o in options}
 
 
     def process_video(video, model_option):
